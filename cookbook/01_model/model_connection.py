@@ -6,7 +6,36 @@ import os
 
 import httpx
 from deepagents import create_deep_agent
+from langchain.agents.middleware import AgentMiddleware
 from langchain_openai import ChatOpenAI
+
+BUILTIN_TOOLS = frozenset(
+    {
+        "write_todos",
+        "ls",
+        "read_file",
+        "write_file",
+        "edit_file",
+        "glob",
+        "grep",
+        "execute",
+        "task",
+    }
+)
+
+
+def tool_name(tool) -> str | None:
+    if isinstance(tool, dict):
+        name = tool.get("name")
+        return name if isinstance(name, str) else None
+    name = getattr(tool, "name", None)
+    return name if isinstance(name, str) else None
+
+
+class DisableBuiltinTools(AgentMiddleware):
+    def wrap_model_call(self, request, handler):
+        tools = [tool for tool in request.tools if tool_name(tool) not in BUILTIN_TOOLS]
+        return handler(request.override(tools=tools))
 
 
 def main() -> None:
@@ -21,6 +50,7 @@ def main() -> None:
     agent = create_deep_agent(
         model=model,
         system_prompt="你是一个中文技术写作助手。回答要短，先给结论。",
+        middleware=[DisableBuiltinTools()],
     )
 
     result = agent.invoke(
