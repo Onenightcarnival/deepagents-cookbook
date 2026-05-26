@@ -1,53 +1,42 @@
 # Recipe 标题
 
-一句话说明这个示例做什么。
-
 ## 场景
 
-说明用户遇到的问题，以及这个示例会跑出什么结果。
+用两三句话说明读者遇到什么问题。先讲任务，不要先讲概念。
+
+## 代码
+
+说明示例文件的位置。
+
+```text
+cookbook/主题目录/recipe_name/
+```
+
+如果只有一个 Python 文件，也可以直接链接到文件。
 
 ## 运行方式
 
-```bash
-uv run python main.py
-```
-
-需要环境变量时，放在这里：
+列出必要环境变量。
 
 ```bash
-export MODEL_API_KEY="..."
-export MODEL_BASE_URL="..."
-export MODEL_NAME="..."
+export MODEL_NAME=openai:gpt-5
+export MODEL_API_KEY=你的密钥
 ```
 
-## 代码结构
+给出运行命令。
 
-```text
-README.md
-main.py
-.env.example
+```bash
+uv run python cookbook/主题目录/example.py
 ```
 
-## 关键代码
+如果需要额外服务、MCP server 或本地文件，在这里写清楚。
 
-```python
-# 放最小关键片段。完整代码仍以 main.py 为准。
-```
+## 关键点
 
-## 说明
+- 说明这个 recipe 里最重要的 DeepAgents 对象。
+- 说明输入、输出和状态变化。
+- 说明 tool、memory、skill 或 sandbox 的边界。
 
-解释这个 recipe 里的关键对象、状态、工具或运行边界。只解释读者理解示例必须知道的部分。
+## 取舍
 
-## 可以怎么改
-
-- 替换模型
-- 替换工具
-- 调整指令
-- 调整运行边界
-- 拆出子 agent
-
-## 常见问题
-
-### 问题标题
-
-说明现象、原因和处理方式。
+写清楚这个做法适合什么，不适合什么。不要写“提升体验”这类空话。

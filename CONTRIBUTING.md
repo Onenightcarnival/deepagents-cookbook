@@ -6,10 +6,10 @@
 
 新增 recipe 时，建议按这个顺序准备：
 
-1. 在 `cookbook/` 下选择合适分类。
+1. 在 `cookbook/` 下选择合适主题。
 2. 新建一个英文小写目录，比如 `custom_tool_agent/`。
 3. 放入 `README.md` 和必要代码。
-4. 在分类目录的 README 里补一行链接。
+4. 在主题目录的 README 里补一行链接。
 5. 确认运行命令、环境变量和依赖说明都写清楚。
 
 可以从 [docs/recipe-template.md](docs/recipe-template.md) 复制模板。

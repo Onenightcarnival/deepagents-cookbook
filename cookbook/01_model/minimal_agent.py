@@ -1,3 +1,7 @@
+"""Run the smallest DeepAgents example with one model."""
+
+from __future__ import annotations
+
 import os
 
 from deepagents import create_deep_agent
@@ -9,15 +13,14 @@ def main() -> None:
     load_dotenv(".env")
 
     model = ChatOpenAI(
-        api_key=os.environ["MODEL_API_KEY"],
-        base_url=os.environ["MODEL_BASE_URL"],
         model=os.environ["MODEL_NAME"],
-        extra_body={"thinking": {"type": "disabled"}},
+        api_key=os.environ["MODEL_API_KEY"],
+        base_url=os.environ.get("MODEL_BASE_URL") or None,
     )
+
     agent = create_deep_agent(
         model=model,
-        tools=[],
-        system_prompt="你是一个简洁的中文技术助手。回答不使用 emoji。",
+        system_prompt="你是一个中文技术写作助手。回答要短，先给结论。",
     )
 
     result = agent.invoke(
@@ -25,7 +28,7 @@ def main() -> None:
             "messages": [
                 {
                     "role": "user",
-                    "content": "用一句话说明 agent loop 做了什么。",
+                    "content": "用两句话解释 agent 为什么需要 tool。",
                 }
             ]
         }

@@ -1,34 +1,45 @@
 # DeepAgents Cookbook
 
-这个仓库收集 DeepAgents 的中文示例。内容聚焦 DeepAgents 这一层：agent loop、指令、工具、状态、workspace、子 agent、人工确认和运行边界。
+这个仓库收集 DeepAgents 的中文 recipe。
 
-它不是 API 文档的翻译，也不是把所有参数列一遍。每篇 recipe 都从一个具体问题开始，给出可运行代码，再解释关键取舍。
+它不按 API 参数堆章节，而是按 agent 能力组织内容：先搭出能动起来的原始 agent，再把它扩成能承担工作的现代 agent。
 
 ## 适合谁
 
 - 已经会写基础 Python，想系统学习 agent 应用的人
-- 想从零构建 agent，并理解 DeepAgents 如何组织任务、工具和状态的人
-- 想看完整示例，而不是只看零散代码片段的人
+- 想理解 DeepAgents 如何组织 model、tool、state、memory、skill 和 sandbox 的人
+- 想看可运行示例，而不是只看零散代码片段的人
+
+## 设计主线
+
+第一阶段是原始 agent，回答“agent 怎么动起来”。
+
+1. `model`：模型负责理解任务、判断下一步。
+2. `tools_mcp`：工具和 MCP 让 agent 操作外部世界。
+3. `loop_workflow`：loop 让 agent 看结果再调整，workflow 把流程收束到固定路径。
+
+第二阶段是现代 agent，回答“agent 怎么变成工作单元”。
+
+4. `memory`：system prompt 像 JD，长期记忆像履历，`state` 像当前工单上下文。
+5. `skills`：skill 把稳定做法沉到文件里，让 agent 可以复用。
+6. `sandbox`：sandbox 是 agent 的办公电脑，负责文件、命令和权限边界。
 
 ## 内容结构
 
 ```text
 cookbook/
-  00_model_setup/            模型配置
-  01_agent_loop/             Agent loop
-  02_instructions/           指令组织
-  03_tools/                  工具调用
-  04_workspace/              Workspace 与文件
-  05_state_and_context/      状态与上下文
-  06_planning/               任务规划
-  07_subagents/              子 agent
-  08_human_approval/         人工确认
-  09_runtime_boundaries/     运行边界
-  10_end_to_end_agents/      完整 agent
+  01_model/                 原始 agent：模型
+  02_tools_mcp/             原始 agent：工具与 MCP
+  03_loop_workflow/         原始 agent：循环与流程
+  04_memory/                现代 agent：记忆
+  05_skills/                现代 agent：技能
+  06_sandbox/               现代 agent：办公环境
 docs/
-  README.md                  写作约定和目录说明
-  recipe-template.md         recipe 模板
+  README.md                 写作约定和目录说明
+  recipe-template.md        recipe 模板
 ```
+
+每个主题目录先给一个最小 recipe。后续新增内容时，优先放到这六个主题下。
 
 ## 本地环境
 
@@ -38,28 +49,41 @@ docs/
 uv sync
 ```
 
-每个 recipe 会在自己的 README 里写运行命令。如果示例需要额外依赖，再用 `uv add` 加到项目里。
+复制 `.env.example`，填入模型配置。
 
-## 每篇 recipe 怎么写
+```bash
+cp .env.example .env
+```
 
-每篇 recipe 尽量包含这些部分：
+常用变量：
 
-- 场景：这个示例解决什么问题
-- 代码：可以直接运行的最小实现
-- 解释：关键对象、状态、工具和流程
-- 变体：可以替换的模型、工具、指令或运行边界
-- 常见坑：容易出错的地方和排查方式
+```bash
+MODEL_BASE_URL=
+MODEL_API_KEY=...
+MODEL_NAME=openai:gpt-5
+```
 
-## 当前状态
+如果使用兼容 OpenAI 的模型服务，把服务地址填到 `MODEL_BASE_URL`。
 
-项目刚初始化，内容还在规划中。优先补齐这些方向：
+## 运行示例
 
-- DeepSeek 模型配置
-- 最小 agent loop
-- 指令和停止条件
-- 自定义工具调用
-- workspace 文件读写
-- subagent 分工示例
+每个 recipe 的 README 都会写运行命令。比如：
+
+```bash
+uv run python cookbook/01_model/minimal_agent.py
+```
+
+示例代码尽量小，只保留说明问题所需的部分。需要外部服务、模型调用或额外环境变量时，会在对应 README 里说明。
+
+## 写作方式
+
+每篇 recipe 按这个顺序写：
+
+1. 场景：这个示例解决什么问题
+2. 代码：可以直接运行的最小实现
+3. 运行方式：命令、环境变量和预期输出
+4. 关键点：DeepAgents 对象和行为
+5. 取舍：适合什么，不适合什么
 
 ## 参与方式
 
