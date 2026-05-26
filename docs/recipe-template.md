@@ -15,7 +15,9 @@ uv run python main.py
 需要环境变量时，放在这里：
 
 ```bash
-export OPENAI_API_KEY="..."
+export MODEL_API_KEY="..."
+export MODEL_BASE_URL="..."
+export MODEL_NAME="..."
 ```
 
 ## 代码结构

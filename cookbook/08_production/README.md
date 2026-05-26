@@ -5,7 +5,7 @@
 计划补充：
 
 - tracing
-- LangSmith
+- Langfuse
 - token 和成本控制
 - 超时与重试
 - 限流
