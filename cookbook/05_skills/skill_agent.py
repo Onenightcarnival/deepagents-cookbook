@@ -1,10 +1,11 @@
-"""Load a local skill and ask the agent to use it."""
+"""Load a local skill and ask the agent to list available skills."""
 
 from __future__ import annotations
 
 import os
 from pathlib import Path
 
+import httpx
 from deepagents import create_deep_agent
 from deepagents.backends import FilesystemBackend
 from langchain_openai import ChatOpenAI
@@ -16,11 +17,13 @@ def main() -> None:
         model=os.environ["MODEL_NAME"],
         api_key=os.environ["MODEL_API_KEY"],
         base_url=os.environ.get("MODEL_BASE_URL") or None,
+        http_client=httpx.Client(trust_env=False),
+        extra_body={"thinking": {"type": "disabled"}},
     )
 
     agent = create_deep_agent(
         model=model,
-        system_prompt="你是 cookbook 审稿助手。审稿时优先使用已有 skill。",
+        system_prompt="你是 skill 说明助手。回答要短，只说明当前可用 skill。",
         skills=["/skills"],
         backend=FilesystemBackend(root_dir=root, virtual_mode=True),
     )
@@ -30,9 +33,7 @@ def main() -> None:
             "messages": [
                 {
                     "role": "user",
-                    "content": (
-                        "请按 recipe_reviewer skill 审一下这段说明：通过本示例可以帮助开发者更好地理解 sandbox 能力。"
-                    ),
+                    "content": "告诉我你现在有哪些技能可用。",
                 }
             ],
         }

@@ -1,5 +1,5 @@
 ---
-name: recipe_reviewer
+name: recipe-reviewer
 description: 审阅 DeepAgents Cookbook recipe，检查中文表达、结构和可运行说明。
 ---
 
