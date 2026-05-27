@@ -5,10 +5,12 @@ description = "Agent 应用中文示例，使用 DeepAgents 演示。"
 readme = "README.md"
 requires-python = ">=3.12"
 dependencies = [
+    "agent-sandbox==0.0.30",
     "deepagents==0.5.3",
-    "httpx>=0.28.1",
+    "httpx==0.28.1",
     "langchain-mcp-adapters==0.1.14",
     "langchain-openai==1.1.9",
+    "langgraph-checkpoint-postgres==3.1.0",
 ]
 
 [dependency-groups]
