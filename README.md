@@ -86,6 +86,12 @@ MODEL_NAME=deepseek-v4-flash
 
 示例默认使用 DeepSeek 的 OpenAI 兼容接口。换模型时，改这三个变量即可。
 
+有些示例需要本地服务。这里假设你已经会使用 Docker 和 Docker Compose。
+
+- AIO Sandbox：使用官方仓库里的 [docker-compose.yaml](https://github.com/agent-infra/sandbox/blob/main/docker-compose.yaml)，默认 MCP 地址是 `http://localhost:8080/mcp`。
+- Langfuse：需要观测示例时，使用官方仓库里的 [docker-compose.yml](https://github.com/langfuse/langfuse/blob/main/docker-compose.yml)。启动后把 `.env` 里的 Langfuse 变量改成你的本地配置。
+- PostgreSQL with pgvector：需要持久化、记忆或检索示例时，准备一个带 pgvector 扩展的 PostgreSQL。可以参考 [pgvector Docker 镜像说明](https://github.com/pgvector/pgvector#docker)，用 `pgvector/pgvector` 镜像写一个最小 compose 服务。
+
 ## 运行示例
 
 每个示例的 README 都会写运行命令。比如：
