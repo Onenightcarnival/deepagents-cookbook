@@ -1,11 +1,11 @@
 # 文档维护说明
 
-这个项目按“二阶段、六主题”维护 agent cookbook。当前可运行示例使用 DeepAgents。
+这个项目按“二阶段、六主题”维护 agent 示例。当前可运行示例使用 DeepAgents。
 
 ## 目录
 
 ```text
-cookbook/
+examples/
   01_model/
   02_tools_mcp/
   03_turns/
@@ -14,7 +14,7 @@ cookbook/
   06_sandbox/
 docs/
   README.md
-  recipe-template.md
+  example-template.md
 ```
 
 ## 主题边界
@@ -26,11 +26,11 @@ docs/
 - `05_skills`：skill 文件、skill 复用、subagent 使用 skill。
 - `06_sandbox`：文件系统、命令执行、权限、运行边界。
 
-如果一个 recipe 同时涉及多个主题，放到它最想讲清楚的主题。不要为了分类新建很细的目录。
+如果一个示例同时涉及多个主题，放到它最想讲清楚的主题。不要为了分类新建很细的目录。
 
-## Recipe 结构
+## 示例结构
 
-每篇 recipe 使用这个顺序：
+每篇示例使用这个顺序：
 
 1. 场景
 2. 代码

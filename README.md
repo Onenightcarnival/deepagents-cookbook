@@ -1,6 +1,6 @@
-# Agent Cookbook
+# Agent Example
 
-这个仓库收集 agent 应用的中文 recipe。DeepAgents 是当前示例使用的实现库。
+这个仓库收集 agent 应用的中文示例，从简单到复杂演示 agent 构建的过程。DeepAgents 是当前示例使用的实现库。
 
 它不按 API 参数堆章节，而是按 agent 能力组织内容：先搭出能动起来的原始 agent，再把它扩成能承担工作的现代 agent。
 
@@ -28,7 +28,7 @@
 ## 内容结构
 
 ```text
-cookbook/
+examples/
   01_model/                 原始 agent：模型
   02_tools_mcp/             原始 agent：工具与 MCP
   03_turns/                 原始 agent：多轮对话
@@ -37,10 +37,10 @@ cookbook/
   06_sandbox/               现代 agent：办公环境
 docs/
   README.md                 写作约定和目录说明
-  recipe-template.md        recipe 模板
+  example-template.md       示例模板
 ```
 
-每个主题目录先给一个最小 recipe。后续新增内容时，优先放到这六个主题下。
+每个主题目录先给一个最小示例。后续新增内容时，优先放到这六个主题下。
 
 ## 本地环境
 
@@ -68,17 +68,17 @@ MODEL_NAME=deepseek-v4-flash
 
 ## 运行示例
 
-每个 recipe 的 README 都会写运行命令。比如：
+每个示例的 README 都会写运行命令。比如：
 
 ```bash
-uv run --env-file .env python cookbook/01_model/model_connection.py
+uv run --env-file .env python examples/01_model/model_connection.py
 ```
 
 示例代码尽量小，只保留说明问题所需的部分。需要外部服务、模型调用或额外环境变量时，会在对应 README 里说明。
 
 ## 写作方式
 
-每篇 recipe 按这个顺序写：
+每篇示例按这个顺序写：
 
 1. 场景：这个示例解决什么问题
 2. 代码：可以直接运行的最小实现
@@ -88,4 +88,4 @@ uv run --env-file .env python cookbook/01_model/model_connection.py
 
 ## 参与方式
 
-欢迎提交新的 recipe、修正文档和补充运行说明。写作风格见 [CONTRIBUTING.md](CONTRIBUTING.md)，目录约定见 [docs/README.md](docs/README.md)。
+欢迎提交新的示例、修正文档和补充运行说明。写作风格见 [CONTRIBUTING.md](CONTRIBUTING.md)，目录约定见 [docs/README.md](docs/README.md)。

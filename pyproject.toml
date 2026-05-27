@@ -1,7 +1,7 @@
 [project]
-name = "deepagents-cookbook"
+name = "deepagents-examples"
 version = "0.1.0"
-description = "Agent 中文 cookbook，使用 DeepAgents 编写可运行示例。"
+description = "Agent 应用中文示例，使用 DeepAgents 演示。"
 readme = "README.md"
 requires-python = ">=3.12"
 dependencies = [

@@ -2,17 +2,17 @@
 
 欢迎补充示例、修正文档和整理运行说明。这个项目更看重示例是否清楚、能跑、边界说得明白。
 
-## 新增 recipe
+## 新增示例
 
-新增 recipe 时，建议按这个顺序准备：
+新增示例时，建议按这个顺序准备：
 
-1. 在 `cookbook/` 下选择合适主题。
+1. 在 `examples/` 下选择合适主题。
 2. 新建一个英文小写目录，比如 `custom_tool_agent/`。
 3. 放入 `README.md` 和必要代码。
 4. 在主题目录的 README 里补一行链接。
 5. 确认运行命令、环境变量和依赖说明都写清楚。
 
-可以从 [docs/recipe-template.md](docs/recipe-template.md) 复制模板。
+可以从 [docs/example-template.md](docs/example-template.md) 复制模板。
 
 ## 代码要求
 
@@ -31,7 +31,7 @@
 
 ## 提交前检查
 
-- README 能说清楚这个 recipe 解决什么问题
+- README 能说清楚这个示例解决什么问题
 - 代码和 README 中的命令一致
 - 环境变量写全
 - 没有提交 `.env`、缓存、日志或编辑器配置

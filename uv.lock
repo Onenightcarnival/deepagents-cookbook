@@ -292,7 +292,7 @@ wheels = [
 ]
 
 [[package]]
-name = "deepagents-cookbook"
+name = "deepagents-examples"
 version = "0.1.0"
 source = { virtual = "." }
 dependencies = [
