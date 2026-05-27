@@ -1,6 +1,6 @@
 # 文档维护说明
 
-这个项目按“二阶段、六主题”维护 agent 示例。当前可运行示例使用 DeepAgents。
+这个项目按“四阶段、十二主题”维护 agent 示例。当前可运行示例使用 DeepAgents。
 
 ## 目录
 
@@ -12,6 +12,12 @@ examples/
   04_memory/
   05_skills/
   06_sandbox/
+  07_persistence/
+  08_observability/
+  09_service_integration/
+  10_hooks/
+  11_advanced_memory/
+  12_hitl/
 docs/
   README.md
   example-template.md
@@ -19,12 +25,29 @@ docs/
 
 ## 主题边界
 
+第一阶段是原始 agent：
+
 - `01_model`：模型接入、模型配置、OpenAI 兼容接口。
 - `02_tools_mcp`：本地 tool、MCP tool、外部系统调用。
 - `03_turns`：conversation、turn、messages 上下文。
-- `04_memory`：system prompt、长期 memory、短期 state、checkpoint。
+
+第二阶段是现代 agent：
+
+- `04_memory`：system prompt、长期 memory、短期 state。
 - `05_skills`：skill 文件、skill 复用、subagent 使用 skill。
 - `06_sandbox`：文件系统、命令执行、权限、运行边界。
+
+第三阶段是生产 agent：
+
+- `07_persistence`：外置持久化、checkpoint、thread 恢复。
+- `08_observability`：日志、trace、tool 调用记录、状态快照、失败定位。
+- `09_service_integration`：API 封装、任务状态、错误处理、服务边界。
+
+第四阶段是进阶 agent：
+
+- `10_hooks`：模型调用、tool 调用和状态更新前后的自定义逻辑。
+- `11_advanced_memory`：分层记忆、检索记忆、摘要、遗忘和用户偏好。
+- `12_hitl`：人工确认、审批、打断、继续和结果修正。
 
 如果一个示例同时涉及多个主题，放到它最想讲清楚的主题。不要为了分类新建很细的目录。
 

@@ -13,6 +13,8 @@
 
 ## 设计主线
 
+这个仓库按四个阶段组织示例：先让 agent 动起来，再让它能承担工作，然后补上生产系统需要的工程能力，最后进入复杂任务和运行控制。
+
 第一阶段是原始 agent，回答“agent 怎么动起来”。
 
 1. `model`：接入大模型，确认模型配置能被 agent 使用。
@@ -25,6 +27,18 @@
 5. `skills`：skill 把稳定做法沉到文件里，让 agent 可以复用。
 6. `sandbox`：sandbox 是 agent 的办公电脑，负责文件、命令和权限边界。
 
+第三阶段是生产 agent，回答“agent 怎么接进真实系统”。
+
+7. `persistence`：把运行状态放到外部存储，让 agent 可以恢复现场。
+8. `observability`：记录模型、tool 和 state 的变化，让问题可以定位。
+9. `service_integration`：把 agent 包成服务，接入业务请求、任务状态和错误处理。
+
+第四阶段是进阶 agent，回答“复杂任务怎么控制和扩展”。
+
+10. `hooks`：在关键步骤插入自定义逻辑，接入权限、记录和业务规则。
+11. `advanced_memory`：把记忆拆成更细的层次，处理长期偏好、任务经验和检索。
+12. `hitl`：在关键节点加入人工确认、打断和继续。
+
 ## 内容结构
 
 ```text
@@ -35,12 +49,18 @@ examples/
   04_memory/                现代 agent：记忆
   05_skills/                现代 agent：技能
   06_sandbox/               现代 agent：办公环境
+  07_persistence/           生产 agent：外置持久化
+  08_observability/         生产 agent：可观测
+  09_service_integration/   生产 agent：服务化集成
+  10_hooks/                 进阶 agent：自定义 hooks
+  11_advanced_memory/       进阶 agent：进阶记忆
+  12_hitl/                  进阶 agent：human in the loop
 docs/
   README.md                 写作约定和目录说明
   example-template.md       示例模板
 ```
 
-每个主题目录先给一个最小示例。后续新增内容时，优先放到这六个主题下。
+每个主题目录先给一个最小示例。新增内容时，优先放到已有主题下。如果一个示例跨多个主题，放到它最想讲清楚的主题里。
 
 ## 本地环境
 
